@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f0f8ff;
+    color: #000;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 14%;
+}
+
+.header .logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+}
+
+.header .icons-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header .icons-box i {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.header .icons-box div {
+    position: relative;
+}
+
+.header .icons-box div span {
+    display: inline-flex;
+    position: absolute;
+    bottom: 50%;
+    right: -20px;
+    width: 25px;
+    height: 25px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.header .product-cart,
+.header .favorites-products {
+    position: absolute;
+    top: 110%;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    transition: right 0.35s ease;
+}
+.header .product-cart.open,
+.header .favorites-products.open {
+    right: 10px;
+}
+
+.header .product-cart h3,
+.header .favorites-products h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header .product-cart .product-box,
+.header .favorites-products .favorites-box {
+    width: 100%;
+    height: auto;
+}
+
+.header .product-cart .product-box .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.header .product-cart .product-box .box .info {
+    text-align: center;
+}
+
+.header .product-cart .product-box .box .info img {
+    display: block;
+    width: 80px;
+    height: auto;
+    margin-bottom: 3px;
+    user-select: none;
+}
+
+.header .product-cart .product-box .box .info div h4 {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.header .product-cart .product-box .box .info div h5 {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.header .product-cart .product-box .box .arrows {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .product-cart .product-box .box .arrows i {
+    cursor: pointer;
+    font-size: 15px;
+}
+.header .product-cart .product-box .box .arrows .fa-arrow-left.disable {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.header .product-cart .product-box .box .arrows span {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.header .product-cart .product-box .box .fa-times {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.header .product-cart .check {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    align-items: center;
+    display: none;
+}
+
+.header .product-cart .check h6 {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.header .product-cart .check button {
+    flex: 1;
+    width: 100%;
+    background-color: #08083d;
+    color: #fff;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.header .favorites-products .favorites-box .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.header .favorites-products .favorites-box .box .info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header .favorites-products .favorites-box .box .info img {
+    display: block;
+    width: 80px;
+    height: auto;
+    user-select: none;
+}
+
+.header .favorites-products .favorites-box .box .info div h4 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.header .favorites-products .favorites-box .box .info div h5 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.header .favorites-products .favorites-box .box .fa-times {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+/* ===== Home section ===== */
+.home {
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 10% 50px;
+}
+
+.home .input-field {
+    position: relative;
+    max-width: 530px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.home .input-field input {
+    width: 100%;
+    padding: 11px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px 0 0 5px;
+    letter-spacing: 0.5px;
+}
+
+.home .input-field button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 11px 20px;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    border-radius: 0 5px 5px 0;
+}
+
+.home .home-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.home .home-content .box {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+.home .home-content .box.hide {
+    display: none;
+}
+
+.home .home-content .box img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+    user-select: none;
+}
+
+.home .home-content .box h3 {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 10px 10px 5px;
+}
+
+.home .home-content .box h4 {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.home .home-content .box p {
+    padding: 0 10px 15px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.home .home-content .box i {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    cursor: pointer;
+}
+.home .home-content .box i.favorite {
+    color: #ff0000;
+}
+
+.home .home-content .box button {
+    display: block;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    border-radius: 0 0 5px 5px;
+}
