@@ -157,7 +157,7 @@ homeContent.addEventListener("click", function(event) {
     else if(element.classList.contains("fa-heart")) {
         const productId =  element.parentElement.dataset.id;
         addToFavorites(productId);
-        changeColorFavoriteIcon(productId, element);
+        changeFavoriteIconColor(productId, element);
     }
 });
 
@@ -409,7 +409,7 @@ saveFavoritesInDocument();
 
 // Function to change color of the favorite icon productId
 // Função para alterar a cor do ícone de favoritos
-function changeColorFavoriteIcon(positionId, element) {
+function changeFavoriteIconColor(positionId, element) {
     const positionFavoriteId = favoritesList.findIndex((value) => value.productId == positionId);
 
     if(positionFavoriteId < 0) {
