@@ -118,6 +118,8 @@ let favoritesList = [];
 // Variável para o carrinho de produtos iniciando com array vazio
 let productsCart = [];
 
+let favoriteListAlternated = [];
+
 // Function to display products in the page
 // função para exibir os produtos na página
 function loadProductsInDocument() {
@@ -153,9 +155,9 @@ homeContent.addEventListener("click", function(event) {
         addToCart(productId);
     }
     else if(element.classList.contains("fa-heart")) {
-        element.classList.toggle("favorite");
-        const productId = element.parentElement.dataset.id;
+        const productId =  element.parentElement.dataset.id;
         addToFavorites(productId);
+        changeColorFavoriteIcon(productId, element);
     }
 });
 
@@ -326,12 +328,13 @@ function addToFavorites(productId) {
         favoritesList.push({productId: productId});
     }
     else {
-        let favoriteId = favoritesList.findIndex((value) => value.productId == productId);
-        if(favoriteId >= 0) {
-            favoritesList.splice(favoriteId, 1);
+        let positionId = favoritesList.findIndex((value) => value.productId == productId);
+        if(positionId >= 0) {
+            favoritesList.splice(positionId, 1);
         }
     }
     loadFavorites();
+    addFavoritesInMemory();
 }
 
 // Function to display favorites
@@ -371,20 +374,50 @@ favoritesBox.addEventListener("click", function(event) {
     const element = event.target;
 
     if(element.classList.contains("fa-times")) {
-        let favoriteId = element.parentElement.dataset.id;
-        removeFavoriteProduct(favoriteId);
+        let positionId = element.parentElement.dataset.id;
+        removeFavoriteProduct(positionId);
     }
 });
 
 // Function to remove product from favorites
 // Função para remover produto dos favoritos
-function removeFavoriteProduct(favoriteId) {
-    const productFavoriteId = favoritesList.findIndex((value) => value.productId == favoriteId);
+function removeFavoriteProduct(positionId) {
+    const productFavoriteId = favoritesList.findIndex((value) => value.productId == positionId);
 
     if(productFavoriteId >= 0) {
         favoritesList.splice(productFavoriteId, 1);
     }
     loadFavorites();
+    addFavoritesInMemory();
+}
+
+// Function to add favorite products to local storage
+// Função para adicionar produtos favoritos ao armazenamento local
+function addFavoritesInMemory() {
+    localStorage.setItem("favorites", JSON.stringify(favoritesList));
+}
+
+// Function so that favorite products remain saved in the document
+// Função para que os produtos favoritos permaneçam salvos no documento
+function saveFavoritesInDocument() {
+    if(localStorage.getItem("favorites")) {
+        favoritesList = JSON.parse(localStorage.getItem("favorites"));
+    }
+    loadFavorites();
+}
+saveFavoritesInDocument();
+
+// Function to change color of the favorite icon productId
+// Função para alterar a cor do ícone de favoritos
+function changeColorFavoriteIcon(positionId, element) {
+    const positionFavoriteId = favoritesList.findIndex((value) => value.productId == positionId);
+
+    if(positionFavoriteId < 0) {
+        element.classList.remove("favorite");
+    }
+    else if(positionFavoriteId >= 0) {
+        element.classList.add("favorite");
+    }
 }
 
 // Selecting elements
@@ -393,6 +426,8 @@ const cartIcon = document.querySelector(".header .icons-box .fa-shopping-cart");
 const cartBox = document.querySelector(".header .product-cart");
 const cards = document.querySelectorAll(".home .home-content .box");
 
+// Display products
+// Exibir produtos
 cards.forEach((card) => card.classList.remove("hide"));
 
 // Filter products pressing the ENTER key
