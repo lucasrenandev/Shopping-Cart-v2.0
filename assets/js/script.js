@@ -118,8 +118,6 @@ let favoritesList = [];
 // Variável para o carrinho de produtos iniciando com array vazio
 let productsCart = [];
 
-let favoriteListAlternated = [];
-
 // Function to display products in the page
 // função para exibir os produtos na página
 function loadProductsInDocument() {
@@ -407,18 +405,18 @@ function saveFavoritesInDocument() {
 }
 saveFavoritesInDocument();
 
-// Function to change color of the favorite icon productId
-// Função para alterar a cor do ícone de favoritos
+// Function to change color of the favorite icon
+// Função para alterar a cor do ícone de favorito
 function changeFavoriteIconColor(positionId, element) {
     const positionFavoriteId = favoritesList.findIndex((value) => value.productId == positionId);
 
     if(positionFavoriteId < 0) {
         element.classList.remove("favorite");
     }
-    else if(positionFavoriteId >= 0) {
+    else {
         element.classList.add("favorite");
     }
-}
+} 
 
 // Selecting elements
 // Selecionando elementos
